@@ -47,18 +47,54 @@ uploadBox.addEventListener("click", (e) => {
     }
 });
 
-// Baca file logo dengan FileReader (Base64)
+// Fungsi untuk membuat gambar menjadi bundar menggunakan Canvas
+function cropToCircle(imageSrc, callback) {
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.onload = () => {
+        const size = Math.min(img.width, img.height);
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+
+        // Buat path bundar
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.clip();
+
+        // Gambar image ke dalam path bundar (di tengah)
+        const x = (img.width - size) / 2;
+        const y = (img.height - size) / 2;
+        ctx.drawImage(img, x, y, size, size, 0, 0, size, size);
+
+        // Kembalikan sebagai base64
+        callback(canvas.toDataURL('image/png'));
+    };
+    img.src = imageSrc;
+}
+
+// Baca file logo dengan FileReader (Base64) lalu potong bundar
 logoUpload.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = (event) => {
-            currentLogoUrl = event.target.result;
-            uploadText.textContent = "Logo Terpilih: " + file.name;
-            logoPreview.src = currentLogoUrl;
-            logoPreview.classList.remove("hidden");
-            removeLogoBtn.classList.remove("hidden");
-            generateQR();
+            const rawImageBase64 = event.target.result;
+            
+            // Proses gambar agar bulat sempurna sebelum masuk ke QR
+            cropToCircle(rawImageBase64, (circularImageBase64) => {
+                currentLogoUrl = circularImageBase64;
+                
+                // Update UI Upload Box
+                uploadText.textContent = "Logo Terpilih: " + file.name;
+                logoPreview.src = currentLogoUrl; // Logo di preview atas juga bulat
+                logoPreview.classList.remove("hidden");
+                removeLogoBtn.classList.remove("hidden");
+                
+                generateQR();
+            });
         };
         reader.readAsDataURL(file);
     }
