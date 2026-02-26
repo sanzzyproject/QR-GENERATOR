@@ -9,7 +9,43 @@
     <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
 </head>
 <body>
-    <div class="app-container">
+
+    <div id="landingPage" class="landing-container">
+        <div class="landing-content">
+            <div class="brand-logo-icon"></div>
+            
+            <h1 class="landing-title">QR Premium</h1>
+            <p class="landing-desc">Platform yang didesain untuk membuat dan mengelola QR Code berkualitas tinggi dengan mudah untuk semua orang.</p>
+
+            <div class="terms-checkbox">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="agreeTerms" checked>
+                    <span class="checkmark"></span>
+                    <span class="terms-text">Saya setuju dengan Syarat & Ketentuan serta menyetujui Kebijakan Privasi dari QR Premium.</span>
+                </label>
+            </div>
+
+            <div class="landing-actions">
+                <button id="startAppBtn" class="landing-btn-primary">
+                    <div class="btn-text">
+                        <strong>Buat QR Code Baru</strong>
+                        <span>Mulai generate QR tanpa login</span>
+                    </div>
+                    <span class="chevron">›</span>
+                </button>
+
+                <button id="exploreBtn" class="landing-btn-secondary">
+                    <div class="btn-text">
+                        <strong>Pelajari Fitur</strong>
+                        <span>Lihat dokumentasi & panduan</span>
+                    </div>
+                    <span class="chevron">›</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container hidden-start" id="mainApp">
         <aside class="controls-panel card-glass">
             <div class="header">
                 <h2>Generate QR</h2>
@@ -92,7 +128,7 @@
 
     <div id="toast" class="toast hidden">Notifikasi</div>
 
-    <footer class="credits">
+    <footer class="credits" id="footerCredits" style="display: none;">
         Developed by <strong>SANN404 FORUM</strong>
     </footer>
 
