@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QR Premium Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="controls-panel">
+            <div class="header">
+                <h2>Generate QR</h2>
+                <span class="badge">Premium</span>
+            </div>
+
+            <div class="form-group">
+                <label for="urlInput">URL / Link Target</label>
+                <div class="input-wrapper">
+                    <input type="url" id="urlInput" placeholder="https://example.com" value="https://example.com">
+                    <button class="btn-icon" id="copyUrlBtn" title="Copy URL">🔗</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Pilih Logo (Opsional)</label>
+                <div class="upload-box" id="uploadBox">
+                    <span>Klik atau Drag logo ke sini</span>
+                    <input type="file" id="logoUpload" accept="image/*" hidden>
+                    <button id="removeLogoBtn" class="hidden">Hapus Logo</button>
+                </div>
+            </div>
+
+            <div class="flex-row">
+                <div class="form-group">
+                    <label>Warna QR</label>
+                    <input type="color" id="qrColor" value="#ffffff">
+                </div>
+                <div class="form-group">
+                    <label>Background</label>
+                    <input type="color" id="bgColor" value="#121212">
+                </div>
+            </div>
+
+            <div class="flex-row">
+                <div class="form-group">
+                    <label>Bentuk Titik (Dots)</label>
+                    <select id="dotsType">
+                        <option value="square">Square</option>
+                        <option value="rounded" selected>Rounded</option>
+                        <option value="dots">Dots</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Bentuk Sudut</label>
+                    <select id="cornerType">
+                        <option value="square">Square</option>
+                        <option value="extra-rounded" selected>Extra Rounded</option>
+                        <option value="dot">Dot</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="generateBtn" class="btn-primary">🔄 Update Preview</button>
+        </aside>
+
+        <main class="preview-panel">
+            <div class="preview-card">
+                <div id="qrPreview" class="qr-canvas-container"></div>
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button id="downloadPngBtn" class="btn-secondary">⬇️ Download PNG</button>
+                <button id="downloadSvgBtn" class="btn-secondary">⬇️ Download SVG</button>
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast hidden">Notifikasi</div>
+
+    <footer class="credits">
+        Developed by <strong>SANN404 FORUM</strong>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
