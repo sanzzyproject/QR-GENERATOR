@@ -1,5 +1,5 @@
 // =========================================
-// LOGIC LANDING PAGE & DOCUMENTATION MODAL
+// LOGIC LANDING PAGE & DOCUMENTATION
 // =========================================
 const landingPage = document.getElementById('landingPage');
 const mainApp = document.getElementById('mainApp');
@@ -7,13 +7,13 @@ const footerCredits = document.getElementById('footerCredits');
 const startAppBtn = document.getElementById('startAppBtn');
 const exploreBtn = document.getElementById('exploreBtn');
 
-// Elemen Modal Dokumentasi
+// Elemen Dokumentasi
 const docModal = document.getElementById('docModal');
 const closeDocBtn = document.getElementById('closeDocBtn');
 const openDocFooter = document.getElementById('openDocFooter');
 const openDocFooter2 = document.getElementById('openDocFooter2');
 
-// Fungsi Transisi ke Main App
+// Fungsi Transisi dari Landing Page ke Main App
 function enterApplication() {
     landingPage.classList.add('fade-out');
     setTimeout(() => {
@@ -23,51 +23,32 @@ function enterApplication() {
     }, 600);
 }
 
-// Fungsi Buka Dokumentasi (DIBUAT JAUH LEBIH RESPONSIVE & STABIL)
+// Buka Dokumentasi (Dari Landing atau dari Footer)
 function openDocumentation() {
-    docModal.style.display = 'flex'; // Paksa tampil ke layar dulu
-    // Delay sangat kecil agar animasi CSS transition menangkap perubahannya
-    setTimeout(() => {
-        docModal.classList.add('show');
-    }, 10);
-    // Kunci scroll di background agar user nyaman baca dokumentasi
-    document.body.style.overflow = 'hidden';
+    docModal.classList.add('show');
 }
 
-// Fungsi Tutup Dokumentasi
+// Tutup Dokumentasi
 function closeDocumentation() {
     docModal.classList.remove('show');
-    // Tunggu animasi fade out selesai baru sembunyikan total dari DOM
-    setTimeout(() => {
-        docModal.style.display = 'none';
-    }, 300);
-    // Kembalikan scroll background
-    document.body.style.overflow = 'auto';
 }
 
-// --- Pemasangan Event Listener ---
-
-// Tombol Landing Page
+// Event Listener Utama Aplikasi
 startAppBtn.addEventListener('click', enterApplication);
-exploreBtn.addEventListener('click', openDocumentation); // INI YANG SEBELUMNYA TIDAK RESPON, SEKARANG AMAN
-
-// Tombol Tutup/Buka Modal
+exploreBtn.addEventListener('click', openDocumentation); // Tombol Pelajari Fitur di Landing
 closeDocBtn.addEventListener('click', closeDocumentation);
 openDocFooter.addEventListener('click', (e) => { e.preventDefault(); openDocumentation(); });
 openDocFooter2.addEventListener('click', (e) => { e.preventDefault(); openDocumentation(); });
 
-// Tutup modal jika user mengklik area gelap di luar box pop-up dokumentasi
+// Tutup modal jika user mengklik area luar box modal
 docModal.addEventListener('click', (e) => {
-    if(e.target === docModal) { 
-        closeDocumentation(); 
-    }
+    if(e.target === docModal) { closeDocumentation(); }
 });
 
 
 // =========================================
-// SISA KODE APLIKASI UTAMA (TIDAK ADA PERUBAHAN)
+// SISA KODE APLIKASI UTAMA (TIDAK ADA YANG DIHAPUS)
 // =========================================
-
 // Konfigurasi Awal Library qr-code-styling
 const qrCode = new QRCodeStyling({
     width: 300,
