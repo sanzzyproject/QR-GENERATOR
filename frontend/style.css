@@ -20,7 +20,6 @@ body {
     display: flex; 
     flex-direction: column; 
     min-height: 100vh; 
-    /* UPDATE: Background Grid Halus */
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -29,16 +28,13 @@ body {
     background-position: center center;
 }
 
-/* =========================================
-   LANDING PAGE STYLES (WORLD APP STYLE)
-   ========================================= */
+/* LANDING PAGE STYLES */
 .landing-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
     background-color: var(--bg-dark);
     display: flex; flex-direction: column; justify-content: center;
     padding: 40px 24px; z-index: 9999;
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
-    /* Background Grid untuk Landing juga */
     background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
     background-size: 30px 30px;
 }
@@ -46,7 +42,6 @@ body {
 
 .landing-content { max-width: 420px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; }
 
-/* UPDATE: Logo Landing Page Modern CSS */
 .brand-logo-icon { 
     width: 60px; height: 60px; background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px;
@@ -91,52 +86,63 @@ body {
 .hidden-start { display: none !important; }
 
 /* =========================================
-   DOCUMENTATION MODAL STYLES
+   UPDATE: DOKUMENTASI MODAL STYLES SANGAT DETAIL
    ========================================= */
 .doc-modal {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
-    display: flex; justify-content: center; align-items: center; z-index: 10000;
-    padding: 20px; opacity: 0; visibility: hidden; transition: 0.3s ease;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+    display: none; /* Berubah ke JS controller agar tidak nyangkut */
+    justify-content: center; align-items: center; 
+    z-index: 999999; /* Z-INDEX TERTINGGI agar selalu muncul */
+    padding: 20px; opacity: 0; transition: opacity 0.3s ease;
 }
-.doc-modal.show { opacity: 1; visibility: visible; }
+.doc-modal.show { display: flex; opacity: 1; }
 
 .doc-content {
-    background: var(--bg-dark); max-width: 600px; width: 100%;
+    background: var(--bg-dark); max-width: 650px; width: 100%;
     max-height: 85vh; overflow-y: auto; border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
 }
 .doc-header {
     display: flex; justify-content: space-between; align-items: center;
     padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.1);
     position: sticky; top: 0; background: rgba(9, 9, 11, 0.95); backdrop-filter: blur(10px); z-index: 2;
 }
-.doc-header h2 { font-size: 1.2rem; font-weight: 600; }
+.doc-header h2 { font-size: 1.3rem; font-weight: 700; color: #fff; }
 .close-btn { 
-    background: transparent; color: #fff; border: none; font-size: 2rem; 
-    line-height: 1; cursor: pointer; padding: 0; width: auto; 
+    background: transparent; color: #a1a1aa; border: none; font-size: 2.2rem; 
+    line-height: 1; cursor: pointer; padding: 0 8px; border-radius: 8px; transition: 0.2s;
 }
-.close-btn:hover { color: var(--primary); }
+.close-btn:hover { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
 
-.doc-body { padding: 24px; }
-.doc-body h3 { margin-bottom: 16px; font-size: 1.4rem; color: var(--primary); }
-.doc-body p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; margin-bottom: 24px; }
-.step-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 16px; }
-.step-item h4 { margin-bottom: 8px; color: #fff; font-size: 1.05rem; }
-.step-item p, .step-item ul { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; }
-.step-item ul { padding-left: 20px; margin-top: 8px; }
-.step-item li { margin-bottom: 6px; }
+.doc-body { padding: 28px; }
+.doc-intro { margin-bottom: 24px; }
+.doc-intro p { color: #e4e4e7; line-height: 1.6; font-size: 1.05rem; }
 
-/* =========================================
-   MAIN APP STYLES
-   ========================================= */
+.step-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 14px; margin-bottom: 20px; }
+.step-item h4 { margin-bottom: 12px; color: var(--primary); font-size: 1.15rem; font-weight: 600; }
+.step-item p, .step-item ul { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+.step-item ul { padding-left: 20px; margin-top: 12px; }
+.step-item li { margin-bottom: 8px; }
+.step-item code { background: #000; padding: 2px 6px; border-radius: 4px; font-family: monospace; color: #fff; font-size: 0.85rem;}
+
+.doc-alert.warning { background: rgba(245, 158, 11, 0.1); border-left: 4px solid #f59e0b; padding: 12px 16px; border-radius: 4px 8px 8px 4px; margin: 12px 0; color: #fbbf24; font-size: 0.9rem;}
+
+/* Table di dalam Dokumentasi */
+.doc-table { width: 100%; border-collapse: collapse; margin-top: 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; }
+.doc-table th, .doc-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+.doc-table th { background: rgba(255,255,255,0.05); color: #fff; font-weight: 600; }
+.doc-table tr:last-child td { border-bottom: none; }
+.doc-table td { color: var(--text-muted); }
+
+.doc-footer { margin-top: 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+.doc-footer p { font-size: 0.85rem; color: #52525b; }
+
+
+/* MAIN APP STYLES */
 .app-container { display: flex; flex-wrap: wrap; flex: 1; gap: 24px; padding: 32px; max-width: 1200px; margin: 0 auto; width: 100%; }
-
-.card-glass {
-    background: var(--panel-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border); border-radius: var(--radius);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease, border-color 0.3s ease;
-}
+.card-glass { background: var(--panel-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease, border-color 0.3s ease; }
 .card-glass:hover { border-color: var(--border-hover); }
 
 .controls-panel { flex: 1; min-width: 340px; padding: 28px; }
@@ -149,9 +155,7 @@ body {
 .form-group label { display: block; margin-bottom: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
 .flex-row { display: flex; gap: 16px; }
 
-input[type="url"], select {
-    width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); color: #fff; border-radius: var(--radius-sm); outline: none; transition: all 0.2s ease; font-size: 0.95rem;
-}
+input[type="url"], select { width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); color: #fff; border-radius: var(--radius-sm); outline: none; transition: all 0.2s ease; font-size: 0.95rem; }
 input[type="url"]:focus, select:focus { border-color: var(--primary); background: rgba(0, 0, 0, 0.5); box-shadow: 0 0 0 3px var(--primary-glow); }
 select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23a1a1aa%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 14px top 50%; background-size: 10px auto; }
 
@@ -202,9 +206,7 @@ button { width: 100%; padding: 16px; border: none; border-radius: var(--radius-s
 .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px); background: #10b981; color: white; padding: 14px 28px; border-radius: 30px; font-weight: 600; font-size: 0.95rem; z-index: 1000; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); border: 1px solid rgba(255,255,255,0.2); }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* =========================================
-   UPDATE: PROFESSIONAL MEGA FOOTER
-   ========================================= */
+/* PROFESSIONAL MEGA FOOTER */
 .modern-footer { border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.5); padding: 60px 24px 24px; margin-top: 40px; }
 .footer-container { max-width: 1200px; margin: 0 auto; width: 100%; }
 .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
@@ -236,4 +238,9 @@ button { width: 100%; padding: 16px; border: none; border-radius: var(--radius-s
     .btn-secondary::after { display: none; } 
     .footer-top { flex-direction: column; gap: 30px; }
     .footer-links { gap: 30px; }
+    
+    /* Perbaikan Modal Mobile */
+    .doc-modal { padding: 15px; }
+    .doc-content { max-height: 90vh; }
+    .doc-body { padding: 20px; }
 }
