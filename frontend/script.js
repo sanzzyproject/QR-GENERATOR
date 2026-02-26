@@ -1,5 +1,5 @@
 // =========================================
-// LOGIC LANDING PAGE
+// LOGIC LANDING PAGE & DOCUMENTATION
 // =========================================
 const landingPage = document.getElementById('landingPage');
 const mainApp = document.getElementById('mainApp');
@@ -7,31 +7,48 @@ const footerCredits = document.getElementById('footerCredits');
 const startAppBtn = document.getElementById('startAppBtn');
 const exploreBtn = document.getElementById('exploreBtn');
 
-// Fungsi untuk animasi transisi dari Landing Page ke Main App
+// Elemen Dokumentasi
+const docModal = document.getElementById('docModal');
+const closeDocBtn = document.getElementById('closeDocBtn');
+const openDocFooter = document.getElementById('openDocFooter');
+const openDocFooter2 = document.getElementById('openDocFooter2');
+
+// Fungsi Transisi dari Landing Page ke Main App
 function enterApplication() {
-    // Jalankan animasi fade out
     landingPage.classList.add('fade-out');
-    
-    // Tunggu animasi selesai (600ms), lalu sembunyikan landing dan tampilkan app
     setTimeout(() => {
         landingPage.style.display = 'none';
         mainApp.classList.remove('hidden-start');
-        footerCredits.style.display = 'block';
+        footerCredits.classList.remove('hidden-start');
     }, 600);
 }
 
-// Pasang event listener ke tombol
+// Buka Dokumentasi (Dari Landing atau dari Footer)
+function openDocumentation() {
+    docModal.classList.add('show');
+}
+
+// Tutup Dokumentasi
+function closeDocumentation() {
+    docModal.classList.remove('show');
+}
+
+// Event Listener Utama Aplikasi
 startAppBtn.addEventListener('click', enterApplication);
-exploreBtn.addEventListener('click', enterApplication);
+exploreBtn.addEventListener('click', openDocumentation); // Tombol Pelajari Fitur di Landing
+closeDocBtn.addEventListener('click', closeDocumentation);
+openDocFooter.addEventListener('click', (e) => { e.preventDefault(); openDocumentation(); });
+openDocFooter2.addEventListener('click', (e) => { e.preventDefault(); openDocumentation(); });
+
+// Tutup modal jika user mengklik area luar box modal
+docModal.addEventListener('click', (e) => {
+    if(e.target === docModal) { closeDocumentation(); }
+});
 
 
 // =========================================
-// SISA KODE APLIKASI UTAMA
+// SISA KODE APLIKASI UTAMA (TIDAK ADA YANG DIHAPUS)
 // =========================================
-// Konfigurasi Awal Library qr-code-styling
-// ... (Lanjutkan dengan kode JS lama sampai ke bawah) ...
-    
-
 // Konfigurasi Awal Library qr-code-styling
 const qrCode = new QRCodeStyling({
     width: 300,
@@ -98,18 +115,17 @@ function cropToCircle(imageSrc, callback) {
         ctx.closePath();
         ctx.clip();
 
-        // Gambar image ke dalam path bundar (di tengah)
+        // Gambar image ke dalam path bundar
         const x = (img.width - size) / 2;
         const y = (img.height - size) / 2;
         ctx.drawImage(img, x, y, size, size, 0, 0, size, size);
 
-        // Kembalikan sebagai base64
         callback(canvas.toDataURL('image/png'));
     };
     img.src = imageSrc;
 }
 
-// Baca file logo dengan FileReader (Base64) lalu potong bundar
+// Baca file logo dengan FileReader
 logoUpload.addEventListener("change", (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -117,13 +133,11 @@ logoUpload.addEventListener("change", (e) => {
         reader.onload = (event) => {
             const rawImageBase64 = event.target.result;
             
-            // Proses gambar agar bulat sempurna sebelum masuk ke QR
             cropToCircle(rawImageBase64, (circularImageBase64) => {
                 currentLogoUrl = circularImageBase64;
                 
-                // Update UI Upload Box
                 uploadText.textContent = "Logo Terpilih: " + file.name;
-                logoPreview.src = currentLogoUrl; // Logo di preview atas juga bulat
+                logoPreview.src = currentLogoUrl;
                 logoPreview.classList.remove("hidden");
                 removeLogoBtn.classList.remove("hidden");
                 
@@ -136,7 +150,7 @@ logoUpload.addEventListener("change", (e) => {
 
 // Hapus Logo
 removeLogoBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Mencegah klik ter-trigger ke uploadBox
+    e.stopPropagation(); 
     currentLogoUrl = null;
     logoUpload.value = "";
     uploadText.textContent = "Klik atau Drag logo ke sini";
@@ -171,10 +185,10 @@ function generateQR() {
             }
         });
         loadingOverlay.classList.add("hidden");
-    }, 300); // Simulasi delay untuk animasi loading modern
+    }, 300);
 }
 
-// Event Listeners Inputs -> Auto update saat ada perubahan setup
+// Event Listeners Inputs
 generateBtn.addEventListener("click", generateQR);
 [dotsType, cornerType].forEach(el => {
     el.addEventListener("change", generateQR);
