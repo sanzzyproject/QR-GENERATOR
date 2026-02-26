@@ -12,7 +12,12 @@
 
     <div id="landingPage" class="landing-container">
         <div class="landing-content">
-            <div class="brand-logo-icon"></div>
+            <div class="brand-logo-icon">
+                <div class="logo-dot"></div>
+                <div class="logo-dot"></div>
+                <div class="logo-dot"></div>
+                <div class="logo-dot alt"></div>
+            </div>
             
             <h1 class="landing-title">QR Premium</h1>
             <p class="landing-desc">Platform yang didesain untuk membuat dan mengelola QR Code berkualitas tinggi dengan mudah untuk semua orang.</p>
@@ -41,6 +46,48 @@
                     </div>
                     <span class="chevron">›</span>
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="docModal" class="doc-modal hidden">
+        <div class="doc-content card-glass">
+            <div class="doc-header">
+                <h2>📚 Dokumentasi Penggunaan</h2>
+                <button id="closeDocBtn" class="close-btn">&times;</button>
+            </div>
+            <div class="doc-body">
+                <h3>Panduan Lengkap QR Premium</h3>
+                <p>Ikuti langkah-langkah detail berikut untuk menghasilkan QR Code yang profesional, dapat dipindai dengan cepat, dan menarik secara visual:</p>
+                
+                <div class="step-item">
+                    <h4>1. Memasukkan URL/Link Target</h4>
+                    <p>Pada kolom <strong>URL / Link Target</strong>, masukkan alamat website lengkap (contoh: <code>https://sann404.vercel.app</code>) yang ingin Anda jadikan QR Code. Pastikan link aktif agar QR dapat digunakan.</p>
+                </div>
+
+                <div class="step-item">
+                    <h4>2. Menambahkan Logo (Opsional namun Direkomendasikan)</h4>
+                    <p>Klik kotak <strong>Pilih Logo</strong> untuk mengunggah gambar identitas Anda. Sistem kami secara otomatis akan memotong logo tersebut menjadi bentuk bundar yang estetik dan menempatkannya di tengah QR tanpa merusak struktur <i>scannability</i>.</p>
+                </div>
+
+                <div class="step-item">
+                    <h4>3. Kustomisasi Warna</h4>
+                    <p>Klik pada kotak warna untuk mengubah estetika. <br>
+                    ⚠️ <strong>Penting:</strong> Untuk memastikan QR tetap bisa dipindai (di-scan) oleh kamera HP, selalu gunakan <strong>Warna QR yang lebih gelap</strong> dibandingkan <strong>Warna Background</strong>. Jangan gunakan warna QR kuning cerah dengan background putih.</p>
+                </div>
+
+                <div class="step-item">
+                    <h4>4. Mengubah Gaya Visual (Bentuk & Sudut)</h4>
+                    <ul>
+                        <li><strong>Bentuk Titik:</strong> Pilih <i>Rounded</i> untuk gaya melengkung modern, <i>Dots</i> untuk desain bintik elegan, atau <i>Square</i> untuk gaya klasik.</li>
+                        <li><strong>Bentuk Sudut:</strong> Mengatur <i>frame</i> atau bingkai dari ketiga kotak besar di sudut QR Code.</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <h4>5. Menyimpan Hasil (Download)</h4>
+                    <p>Setelah Anda menekan tombol <strong>Update Preview</strong> dan puas dengan hasilnya, gunakan tombol download di bagian bawah layar. Gunakan <strong>PNG</strong> untuk penggunaan umum (sosmed, chat), dan <strong>SVG</strong> jika Anda ingin mencetaknya dalam ukuran besar (banner, stiker) agar tidak pecah.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -128,8 +175,43 @@
 
     <div id="toast" class="toast hidden">Notifikasi</div>
 
-    <footer class="credits" id="footerCredits" style="display: none;">
-        Developed by <strong>SANN404 FORUM</strong>
+    <footer class="modern-footer hidden-start" id="footerCredits">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="brand-logo-icon-small">
+                            <div class="logo-dot-sm"></div><div class="logo-dot-sm"></div>
+                            <div class="logo-dot-sm"></div><div class="logo-dot-sm alt"></div>
+                        </div>
+                        <h3>QR Premium</h3>
+                    </div>
+                    <p>Platform enterprise untuk pembuatan QR Code modern dengan tingkat kustomisasi tertinggi. Aman, cepat, dan responsif.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Produk</h4>
+                        <a href="#">Generator QR</a>
+                        <a href="#">Vercel API</a>
+                        <a href="#">Serverless</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Bantuan</h4>
+                        <a href="#" id="openDocFooter">Dokumentasi API</a>
+                        <a href="#" id="openDocFooter2">Panduan Pengguna</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Perusahaan</h4>
+                        <a href="#">SANN404 FORUM</a>
+                        <a href="#">Kebijakan Privasi</a>
+                        <a href="#">Syarat & Ketentuan</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <strong>SANN404 FORUM</strong>. All rights reserved. Built with precision.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
