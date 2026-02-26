@@ -26,7 +26,7 @@
                 <label class="checkbox-container">
                     <input type="checkbox" id="agreeTerms" checked>
                     <span class="checkmark"></span>
-                    <span class="terms-text">Saya setuju dengan Syarat & Ketentuan serta menyetujui Kebijakan Privasi dari QR Premium.</span>
+                    <span class="terms-text">Saya setuju dengan Syarat & Ketentuan serta menyetujui Kebijakan Privasi dari QR Generate.</span>
                 </label>
             </div>
 
@@ -53,87 +53,40 @@
     <div id="docModal" class="doc-modal hidden">
         <div class="doc-content card-glass">
             <div class="doc-header">
-                <h2>Dokumentasi Resmi QR Generate</h2>
-                <button id="closeDocBtn" class="close-btn" title="Tutup Dokumentasi">&times;</button>
+                <h2>📚 Dokumentasi Penggunaan</h2>
+                <button id="closeDocBtn" class="close-btn">&times;</button>
             </div>
             <div class="doc-body">
-                <div class="doc-intro">
-                    <p>Selamat datang di Pusat Bantuan <strong>QR Premium Generator</strong>. Panduan ini dirancang khusus untuk membantu Anda memahami seluruh fitur kustomisasi tingkat lanjut sehingga Anda dapat menghasilkan QR Code yang tidak hanya estetik, tetapi juga 100% fungsional dan mudah dipindai oleh semua jenis perangkat <i>smartphone</i>.</p>
-                </div>
+                <h3>Panduan Lengkap QR Generate</h3>
+                <p>Ikuti langkah-langkah detail berikut untuk menghasilkan QR Code yang profesional, dapat dipindai dengan cepat, dan menarik secara visual:</p>
                 
                 <div class="step-item">
-                    <h4>1. Memasukkan URL / Tautan Target</h4>
-                    <p>Langkah pertama adalah menentukan tujuan kemana pengguna akan diarahkan ketika memindai QR Code Anda.</p>
+                    <h4>1. Memasukkan URL/Link Target</h4>
+                    <p>Pada kolom <strong>URL / Link Target</strong>, masukkan alamat website lengkap (contoh: <code>https://sann404.vercel.app</code>) yang ingin Anda jadikan QR Code. Pastikan link aktif agar QR dapat digunakan.</p>
+                </div>
+
+                <div class="step-item">
+                    <h4>2. Menambahkan Logo (Opsional namun Direkomendasikan)</h4>
+                    <p>Klik kotak <strong>Pilih Logo</strong> untuk mengunggah gambar identitas Anda. Sistem kami secara otomatis akan memotong logo tersebut menjadi bentuk bundar yang estetik dan menempatkannya di tengah QR tanpa merusak struktur <i>scannability</i>.</p>
+                </div>
+
+                <div class="step-item">
+                    <h4>3. Kustomisasi Warna</h4>
+                    <p>Klik pada kotak warna untuk mengubah estetika. <br>
+                    ⚠️ <strong>Penting:</strong> Untuk memastikan QR tetap bisa dipindai (di-scan) oleh kamera HP, selalu gunakan <strong>Warna QR yang lebih gelap</strong> dibandingkan <strong>Warna Background</strong>. Jangan gunakan warna QR kuning cerah dengan background putih.</p>
+                </div>
+
+                <div class="step-item">
+                    <h4>4. Mengubah Gaya Visual (Bentuk & Sudut)</h4>
                     <ul>
-                        <li>Pastikan URL diawali dengan protokol yang benar, contoh: <code>https://</code> atau <code>http://</code>.</li>
-                        <li><strong>Tips Profesional:</strong> Jika URL Anda terlalu panjang, titik-titik (data matrix) pada QR Code akan semakin padat dan rapat. Hal ini wajar, namun kami menyarankan menggunakan *URL Shortener* jika memungkinkan agar QR Code terlihat lebih renggang dan lebih cepat dipindai oleh kamera beresolusi rendah.</li>
+                        <li><strong>Bentuk Titik:</strong> Pilih <i>Rounded</i> untuk gaya melengkung modern, <i>Dots</i> untuk desain bintik elegan, atau <i>Square</i> untuk gaya klasik.</li>
+                        <li><strong>Bentuk Sudut:</strong> Mengatur <i>frame</i> atau bingkai dari ketiga kotak besar di sudut QR Code.</li>
                     </ul>
                 </div>
 
                 <div class="step-item">
-                    <h4>2. Menyematkan Logo (Branding)</h4>
-                    <p>Anda dapat mengunggah logo perusahaan atau foto profil untuk disematkan tepat di tengah QR Code.</p>
-                    <div class="doc-alert warning">
-                        <strong>Info Teknis:</strong> Sistem kami menggunakan algoritma <i>Error Correction Level H (High)</i>. Artinya, 30% dari struktur data QR Code bisa tertutup (oleh logo) tanpa merusak fungsi scan.
-                    </div>
-                    <ul>
-                        <li><strong>Otomatisasi:</strong> Cukup unggah gambar (JPG/PNG/WebP). Sistem kami berbasis <i>Canvas JavaScript</i> akan secara otomatis memotong gambar Anda menjadi bentuk bundar (Circle Crop) dengan presisi pixel sempurna sebelum menanamkannya ke dalam QR Code.</li>
-                        <li><strong>Batas Aman:</strong> Ukuran logo maksimal telah kami batasi pada sistem sebesar ~25% dari total rasio QR. Jangan khawatir QR Anda akan rusak, kami telah menguncinya pada batas aman pemindaian.</li>
-                    </ul>
-                </div>
-
-                <div class="step-item">
-                    <h4>3. Aturan Kustomisasi Warna (Sangat Penting!)</h4>
-                    <p>Kegagalan pemindaian QR Code 90% disebabkan oleh pemilihan warna yang salah. Kamera dan aplikasi *scanner* membaca QR dengan mencari kontras antara titik data (foreground) dan latar belakang (background).</p>
-                    <table class="doc-table">
-                        <tr>
-                            <th>Kondisi Kontras</th>
-                            <th>Status Scan</th>
-                            <th>Contoh Kombinasi</th>
-                        </tr>
-                        <tr>
-                            <td>QR Gelap, Background Terang</td>
-                            <td><strong>Sangat Baik</strong></td>
-                            <td>QR Hitam, Background Putih/Kuning Muda</td>
-                        </tr>
-                        <tr>
-                            <td>QR Terang, Background Gelap</td>
-                            <td><strong>Bisa Gagal</strong></td>
-                            <td>QR Putih, Background Hitam</td>
-                        </tr>
-                        <tr>
-                            <td>Warna Mirip (Kurang Kontras)</td>
-                            <td><strong>Gagal Total</strong></td>
-                            <td>QR Abu-abu Tua, Background Hitam</td>
-                        </tr>
-                    </table>
-                    <p><strong>Rekomendasi:</strong> Pertahankan warna "Background" pada warna yang sangat cerah (Putih/Hex: #FFFFFF) dan ubahlah "Warna QR" sesuai warna identitas *brand* Anda (misal: Biru Tua, Hijau Tua, Merah Gelap).</p>
-                </div>
-
-                <div class="step-item">
-                    <h4>4. Menyesuaikan Gaya Visual (Shape Styling)</h4>
-                    <p>QR Premium memungkinkan Anda keluar dari desain kotak-kotak kaku tradisional. Anda memiliki 2 kontrol utama:</p>
-                    <ul>
-                        <li><strong>Bentuk Titik (Dots):</strong> 
-                            <br>- <i>Square</i>: Bentuk klasik, sangat kaku, standar industri.
-                            <br>- <i>Rounded</i>: Sudut membulat yang lembut, terlihat paling modern dan direkomendasikan untuk aplikasi UI terkini.
-                            <br>- <i>Dots</i>: Berbentuk bulatan penuh, memberikan kesan premium dan artistik.
-                        </li>
-                        <li><strong>Bentuk Sudut (Corner/Eyes):</strong> Ini mengatur bingkai 3 kotak besar di pojok. <i>Extra Rounded</i> memberikan estetika "SaaS/Tech" yang sangat populer saat ini.</li>
-                    </ul>
-                </div>
-
-                <div class="step-item">
-                    <h4>5. Format Ekspor (Download PNG vs SVG)</h4>
-                    <p>Setelah *preview* sesuai dengan keinginan Anda, silakan unduh hasilnya. Pilih format yang tepat berdasarkan kebutuhan Anda:</p>
-                    <ul>
-                        <li><strong>Download PNG (Raster):</strong> Cocok untuk penggunaan digital. Gunakan ini jika QR akan dibagikan via WhatsApp, dipasang di website, atau diposting di media sosial (Instagram/Facebook). File lebih kecil dan didukung semua *device*.</li>
-                        <li><strong>Download SVG (Vector):</strong> Format profesional tanpa batas resolusi (<i>infinite scalability</i>). Wajib digunakan jika QR Code ini akan dikirim ke percetakan untuk dijadikan spanduk besar, *billboard*, *merchandise* (kaos/mug), atau desain brosur di Adobe Illustrator/CorelDraw. Gambar <strong>tidak akan pernah pecah</strong> sebesar apapun ukurannya.</li>
-                    </ul>
-                </div>
-
-                <div class="doc-footer">
-                    <p>Sistem ini sepenuhnya diproses di perangkat Anda (Client-Side Rendering) untuk keamanan privasi tautan Anda. Developed by <strong>SANN404 FORUM</strong>.</p>
+                    <h4>5. Menyimpan Hasil (Download)</h4>
+                    <p>Setelah Anda menekan tombol <strong>Update Preview</strong> dan puas dengan hasilnya, gunakan tombol download di bagian bawah layar. Gunakan <strong>PNG</strong> untuk penggunaan umum (sosmed, chat), dan <strong>SVG</strong> jika Anda ingin mencetaknya dalam ukuran besar (banner, stiker) agar tidak pecah.</p>
                 </div>
             </div>
         </div>
@@ -143,7 +96,7 @@
         <aside class="controls-panel card-glass">
             <div class="header">
                 <h2>Generate QR</h2>
-                <span class="badge">Premium</span>
+                <span class="badge">FREE</span>
             </div>
 
             <div class="form-group">
@@ -231,7 +184,7 @@
                             <div class="logo-dot-sm"></div><div class="logo-dot-sm"></div>
                             <div class="logo-dot-sm"></div><div class="logo-dot-sm alt"></div>
                         </div>
-                        <h3>QR Premium</h3>
+                        <h3>QR Generate</h3>
                     </div>
                     <p>Platform enterprise untuk pembuatan QR Code modern dengan tingkat kustomisasi tertinggi. Aman, cepat, dan responsif.</p>
                 </div>
