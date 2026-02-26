@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>QR Premium Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
@@ -20,14 +20,15 @@
                 <label for="urlInput">URL / Link Target</label>
                 <div class="input-wrapper">
                     <input type="url" id="urlInput" placeholder="https://example.com" value="https://example.com">
-                    <button class="btn-icon" id="copyUrlBtn" title="Copy URL">🔗</button>
+                    <button class="btn-icon" id="copyUrlBtn" title="Copy URL"></button>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Pilih Logo (Opsional)</label>
                 <div class="upload-box" id="uploadBox">
-                    <span>Klik atau Drag logo ke sini</span>
+                    <img id="logoPreview" class="logo-preview hidden" src="" alt="Logo Preview">
+                    <span id="uploadText">Klik atau Drag logo ke sini</span>
                     <input type="file" id="logoUpload" accept="image/*" hidden>
                     <button id="removeLogoBtn" class="hidden">Hapus Logo</button>
                 </div>
@@ -36,11 +37,19 @@
             <div class="flex-row">
                 <div class="form-group">
                     <label>Warna QR</label>
-                    <input type="color" id="qrColor" value="#ffffff">
+                    <div class="color-wrapper" id="qrColorWrapper">
+                        <input type="color" id="qrColor" value="#000000">
+                        <div class="color-preview" id="qrColorPreview" style="background-color: #000000;"></div>
+                        <span id="qrColorValue">#000000</span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Background</label>
-                    <input type="color" id="bgColor" value="#121212">
+                    <div class="color-wrapper" id="bgColorWrapper">
+                        <input type="color" id="bgColor" value="#ffffff">
+                        <div class="color-preview" id="bgColorPreview" style="background-color: #ffffff;"></div>
+                        <span id="bgColorValue">#ffffff</span>
+                    </div>
                 </div>
             </div>
 
@@ -63,7 +72,7 @@
                 </div>
             </div>
 
-            <button id="generateBtn" class="btn-primary">🔄 Update Preview</button>
+            <button id="generateBtn" class="btn-primary">Update Preview</button>
         </aside>
 
         <main class="preview-panel">
@@ -75,8 +84,8 @@
             </div>
             
             <div class="actions">
-                <button id="downloadPngBtn" class="btn-secondary">⬇️ Download PNG</button>
-                <button id="downloadSvgBtn" class="btn-secondary">⬇️ Download SVG</button>
+                <button id="downloadPngBtn" class="btn-secondary">Download PNG</button>
+                <button id="downloadSvgBtn" class="btn-secondary">Download SVG</button>
             </div>
         </main>
     </div>
