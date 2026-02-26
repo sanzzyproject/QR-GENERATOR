@@ -1,3 +1,70 @@
+/* =========================================
+   LANDING PAGE STYLES (WORLD APP STYLE)
+   ========================================= */
+.landing-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: var(--bg-dark);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 40px 24px; z-index: 9999;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+}
+.landing-container.fade-out { opacity: 0; visibility: hidden; transform: scale(0.98); }
+
+.landing-content { max-width: 420px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; }
+
+.brand-logo-icon { 
+    width: 48px; height: 48px; border: 3px solid #fff; border-radius: 50%; 
+    margin-bottom: 32px; position: relative; 
+}
+.brand-logo-icon::before { 
+    content: ''; position: absolute; top: 50%; left: -3px; right: -3px; 
+    height: 3px; background: #fff; transform: translateY(-50%); 
+}
+.brand-logo-icon::after { 
+    content: ''; position: absolute; top: -3px; bottom: -3px; left: 50%; 
+    width: 3px; background: #fff; transform: translateX(-50%); 
+}
+
+.landing-title { font-size: 2.8rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -1.5px; color: #fff; }
+.landing-desc { color: #a1a1aa; font-size: 1.1rem; line-height: 1.5; margin-bottom: 40px; }
+
+.terms-checkbox { margin-bottom: 24px; }
+.checkbox-container { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; user-select: none; }
+.checkbox-container input { display: none; }
+.checkmark { 
+    width: 20px; height: 20px; background: #1c1c1e; border: 1px solid #3a3a3c; 
+    border-radius: 6px; position: relative; flex-shrink: 0; margin-top: 2px; transition: 0.2s;
+}
+.checkbox-container input:checked ~ .checkmark { background: #fff; border-color: #fff; }
+.checkbox-container input:checked ~ .checkmark::after { 
+    content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; 
+    border: solid #000; border-width: 0 2px 2px 0; transform: rotate(45deg); 
+}
+.terms-text { font-size: 0.85rem; color: #8e8e93; line-height: 1.4; }
+
+.landing-btn-primary, .landing-btn-secondary {
+    display: flex; justify-content: space-between; align-items: center;
+    width: 100%; padding: 20px 24px; border-radius: 20px; text-align: left;
+    margin-bottom: 16px; cursor: pointer; transition: transform 0.2s, background 0.2s; border: none;
+}
+.landing-btn-primary { background: #1c1c1e; color: #fff; }
+.landing-btn-primary:hover { background: #2c2c2e; transform: scale(1.02); }
+.landing-btn-secondary { background: transparent; color: #fff; border: 1px solid #3a3a3c; }
+.landing-btn-secondary:hover { background: rgba(255,255,255,0.05); transform: scale(1.02); }
+
+.landing-btn-primary .btn-text, .landing-btn-secondary .btn-text { display: flex; flex-direction: column; gap: 4px; }
+.landing-btn-primary .btn-text strong, .landing-btn-secondary .btn-text strong { font-size: 1.1rem; font-weight: 600; }
+.landing-btn-primary .btn-text span, .landing-btn-secondary .btn-text span { font-size: 0.85rem; color: #8e8e93; font-weight: 400; }
+.chevron { font-size: 1.8rem; color: #8e8e93; font-weight: 300; line-height: 1; }
+
+.hidden-start { display: none !important; }
+
+/* =========================================
+   SISA KODE APLIKASI UTAMA (Jangan Dihapus)
+   ========================================= *
+/* ... (Lanjutkan dengan kode CSS yang lama dari mulai :root { --panel-bg: rgba(...) dst) ... */
+                        
+
 :root {
     --bg-dark: #0a0a0a;
     --panel-bg: rgba(20, 20, 20, 0.7); /* Translucent background */
