@@ -1,3 +1,37 @@
+// =========================================
+// LOGIC LANDING PAGE
+// =========================================
+const landingPage = document.getElementById('landingPage');
+const mainApp = document.getElementById('mainApp');
+const footerCredits = document.getElementById('footerCredits');
+const startAppBtn = document.getElementById('startAppBtn');
+const exploreBtn = document.getElementById('exploreBtn');
+
+// Fungsi untuk animasi transisi dari Landing Page ke Main App
+function enterApplication() {
+    // Jalankan animasi fade out
+    landingPage.classList.add('fade-out');
+    
+    // Tunggu animasi selesai (600ms), lalu sembunyikan landing dan tampilkan app
+    setTimeout(() => {
+        landingPage.style.display = 'none';
+        mainApp.classList.remove('hidden-start');
+        footerCredits.style.display = 'block';
+    }, 600);
+}
+
+// Pasang event listener ke tombol
+startAppBtn.addEventListener('click', enterApplication);
+exploreBtn.addEventListener('click', enterApplication);
+
+
+// =========================================
+// SISA KODE APLIKASI UTAMA
+// =========================================
+// Konfigurasi Awal Library qr-code-styling
+// ... (Lanjutkan dengan kode JS lama sampai ke bawah) ...
+    
+
 // Konfigurasi Awal Library qr-code-styling
 const qrCode = new QRCodeStyling({
     width: 300,
