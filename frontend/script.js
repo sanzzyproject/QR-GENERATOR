@@ -11,10 +11,10 @@ const qrCode = new QRCodeStyling({
         margin: 10,
         crossOrigin: 'anonymous'
     },
-    dotsOptions: { type: "rounded", color: "#ffffff" },
-    backgroundOptions: { color: "#121212" },
-    cornersSquareOptions: { type: "extra-rounded", color: "#ffffff" },
-    cornersDotOptions: { type: "dot", color: "#ffffff" }
+    dotsOptions: { type: "rounded", color: "#000000" },
+    backgroundOptions: { color: "#ffffff" },
+    cornersSquareOptions: { type: "extra-rounded", color: "#000000" },
+    cornersDotOptions: { type: "dot", color: "#000000" }
 });
 
 // Render QR awal ke DOM
@@ -23,11 +23,17 @@ qrCode.append(document.getElementById("qrPreview"));
 // Element Selectors
 const urlInput = document.getElementById("urlInput");
 const qrColor = document.getElementById("qrColor");
+const qrColorPreview = document.getElementById("qrColorPreview");
+const qrColorValue = document.getElementById("qrColorValue");
 const bgColor = document.getElementById("bgColor");
+const bgColorPreview = document.getElementById("bgColorPreview");
+const bgColorValue = document.getElementById("bgColorValue");
 const dotsType = document.getElementById("dotsType");
 const cornerType = document.getElementById("cornerType");
 const uploadBox = document.getElementById("uploadBox");
 const logoUpload = document.getElementById("logoUpload");
+const logoPreview = document.getElementById("logoPreview");
+const uploadText = document.getElementById("uploadText");
 const removeLogoBtn = document.getElementById("removeLogoBtn");
 const generateBtn = document.getElementById("generateBtn");
 const loadingOverlay = document.getElementById("loadingOverlay");
@@ -48,7 +54,9 @@ logoUpload.addEventListener("change", (e) => {
         const reader = new FileReader();
         reader.onload = (event) => {
             currentLogoUrl = event.target.result;
-            uploadBox.querySelector("span").textContent = "Logo Terpilih: " + file.name;
+            uploadText.textContent = "Logo Terpilih: " + file.name;
+            logoPreview.src = currentLogoUrl;
+            logoPreview.classList.remove("hidden");
             removeLogoBtn.classList.remove("hidden");
             generateQR();
         };
@@ -58,10 +66,12 @@ logoUpload.addEventListener("change", (e) => {
 
 // Hapus Logo
 removeLogoBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Mencegah klik ter-trigger ke uploadBox
     currentLogoUrl = null;
     logoUpload.value = "";
-    uploadBox.querySelector("span").textContent = "Klik atau Drag logo ke sini";
+    uploadText.textContent = "Klik atau Drag logo ke sini";
+    logoPreview.src = "";
+    logoPreview.classList.add("hidden");
     removeLogoBtn.classList.add("hidden");
     generateQR();
 });
@@ -96,8 +106,20 @@ function generateQR() {
 
 // Event Listeners Inputs -> Auto update saat ada perubahan setup
 generateBtn.addEventListener("click", generateQR);
-[qrColor, bgColor, dotsType, cornerType].forEach(el => {
+[dotsType, cornerType].forEach(el => {
     el.addEventListener("change", generateQR);
+});
+
+// Color Picker Modernization Logic
+qrColor.addEventListener("input", (e) => {
+    qrColorPreview.style.backgroundColor = e.target.value;
+    qrColorValue.textContent = e.target.value;
+    generateQR();
+});
+bgColor.addEventListener("input", (e) => {
+    bgColorPreview.style.backgroundColor = e.target.value;
+    bgColorValue.textContent = e.target.value;
+    generateQR();
 });
 
 // Fungsi Copy URL
