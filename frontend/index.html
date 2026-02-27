@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>QR Generate</title>
+    <title>QR Generator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
@@ -26,7 +26,7 @@
                 <label class="checkbox-container">
                     <input type="checkbox" id="agreeTerms" checked>
                     <span class="checkmark"></span>
-                    <span class="terms-text">Saya setuju dengan Syarat & Ketentuan serta menyetujui Kebijakan Privasi dari QR Generate.</span>
+                    <span class="terms-text">Saya setuju dengan Syarat & Ketentuan serta menyetujui Kebijakan Privasi dari QR generate.</span>
                 </label>
             </div>
 
@@ -53,40 +53,63 @@
     <div id="docModal" class="doc-modal hidden">
         <div class="doc-content card-glass">
             <div class="doc-header">
-                <h2>📚 Dokumentasi Penggunaan</h2>
-                <button id="closeDocBtn" class="close-btn">&times;</button>
+                <h2>Dokumentasi Resmi QR Generate</h2>
+                <button id="closeDocBtn" class="close-btn" title="Tutup Dokumentasi">&times;</button>
             </div>
             <div class="doc-body">
-                <h3>Panduan Lengkap QR Generate</h3>
-                <p>Ikuti langkah-langkah detail berikut untuk menghasilkan QR Code yang profesional, dapat dipindai dengan cepat, dan menarik secara visual:</p>
+                <div class="doc-intro">
+                    <p>Selamat datang di Pusat Bantuan <strong>QR Generate Generator</strong>. Panduan ini dirancang khusus untuk membantu Anda memahami seluruh fitur kustomisasi tingkat lanjut sehingga Anda dapat menghasilkan QR Code yang tidak hanya estetik, tetapi juga 100% fungsional dan mudah dipindai oleh semua jenis perangkat <i>smartphone</i>.</p>
+                </div>
                 
                 <div class="step-item">
-                    <h4>1. Memasukkan URL/Link Target</h4>
-                    <p>Pada kolom <strong>URL / Link Target</strong>, masukkan alamat website lengkap (contoh: <code>https://sann404.vercel.app</code>) yang ingin Anda jadikan QR Code. Pastikan link aktif agar QR dapat digunakan.</p>
-                </div>
-
-                <div class="step-item">
-                    <h4>2. Menambahkan Logo (Opsional namun Direkomendasikan)</h4>
-                    <p>Klik kotak <strong>Pilih Logo</strong> untuk mengunggah gambar identitas Anda. Sistem kami secara otomatis akan memotong logo tersebut menjadi bentuk bundar yang estetik dan menempatkannya di tengah QR tanpa merusak struktur <i>scannability</i>.</p>
-                </div>
-
-                <div class="step-item">
-                    <h4>3. Kustomisasi Warna</h4>
-                    <p>Klik pada kotak warna untuk mengubah estetika. <br>
-                    ⚠️ <strong>Penting:</strong> Untuk memastikan QR tetap bisa dipindai (di-scan) oleh kamera HP, selalu gunakan <strong>Warna QR yang lebih gelap</strong> dibandingkan <strong>Warna Background</strong>. Jangan gunakan warna QR kuning cerah dengan background putih.</p>
-                </div>
-
-                <div class="step-item">
-                    <h4>4. Mengubah Gaya Visual (Bentuk & Sudut)</h4>
+                    <h4>1. Memasukkan URL / Tautan Target</h4>
+                    <p>Langkah pertama adalah menentukan tujuan kemana pengguna akan diarahkan ketika memindai QR Code Anda.</p>
                     <ul>
-                        <li><strong>Bentuk Titik:</strong> Pilih <i>Rounded</i> untuk gaya melengkung modern, <i>Dots</i> untuk desain bintik elegan, atau <i>Square</i> untuk gaya klasik.</li>
-                        <li><strong>Bentuk Sudut:</strong> Mengatur <i>frame</i> atau bingkai dari ketiga kotak besar di sudut QR Code.</li>
+                        <li>Pastikan URL diawali dengan protokol yang benar, contoh: <code>https://</code> atau <code>http://</code>.</li>
+                        <li><strong>Tips Profesional:</strong> Jika URL terlalu panjang, titik-titik (data matrix) pada QR Code akan semakin padat. Gunakan <i>URL Shortener</i> agar QR Code terlihat lebih renggang dan lebih cepat dipindai kamera resolusi rendah.</li>
                     </ul>
                 </div>
 
                 <div class="step-item">
-                    <h4>5. Menyimpan Hasil (Download)</h4>
-                    <p>Setelah Anda menekan tombol <strong>Update Preview</strong> dan puas dengan hasilnya, gunakan tombol download di bagian bawah layar. Gunakan <strong>PNG</strong> untuk penggunaan umum (sosmed, chat), dan <strong>SVG</strong> jika Anda ingin mencetaknya dalam ukuran besar (banner, stiker) agar tidak pecah.</p>
+                    <h4> 2. Menyematkan Logo (Branding)</h4>
+                    <p>Anda dapat mengunggah logo perusahaan atau foto profil untuk disematkan tepat di tengah QR Code.</p>
+                    <div class="doc-alert warning">
+                        <strong>Info Teknis:</strong> Sistem kami menggunakan algoritma <i>Error Correction Level H (High)</i>. Artinya, 30% dari struktur data QR Code bisa tertutup (oleh logo) tanpa merusak fungsi scan.
+                    </div>
+                    <ul>
+                        <li><strong>Otomatisasi:</strong> Cukup unggah gambar (JPG/PNG/WebP). Sistem kami berbasis <i>Canvas JavaScript</i> akan secara otomatis memotong gambar Anda menjadi bentuk bundar (Circle Crop) dengan presisi pixel sempurna sebelum dikirim ke Server.</li>
+                    </ul>
+                </div>
+
+                <div class="step-item">
+                    <h4>3. Aturan Kustomisasi Warna (Penting!)</h4>
+                    <p>Kegagalan pemindaian QR Code 90% disebabkan oleh pemilihan warna yang salah. Kamera membaca QR dengan mencari kontras.</p>
+                    <table class="doc-table">
+                        <tr>
+                            <th>Kondisi Kontras</th>
+                            <th>Status Scan</th>
+                            <th>Contoh Kombinasi</th>
+                        </tr>
+                        <tr>
+                            <td>QR Gelap, Background Terang</td>
+                            <td> <strong>Sangat Baik</strong></td>
+                            <td>QR Hitam, Background Putih</td>
+                        </tr>
+                        <tr>
+                            <td>QR Terang, Background Gelap</td>
+                            <td> <strong>Bisa Gagal</strong></td>
+                            <td>QR Putih, Background Hitam</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="step-item">
+                    <h4>4. Menyesuaikan Gaya Visual (Shape Styling)</h4>
+                    <p>QR Generate memungkinkan Anda keluar dari desain kotak-kotak kaku tradisional. Anda memiliki 2 kontrol utama: Bentuk Titik dan Bentuk Sudut bingkai QR.</p>
+                </div>
+
+                <div class="doc-footer">
+                    <p>Sistem ini diproses di Cloud Backend (Serverless) secara real-time. Developed by <strong>SANN404 FORUM</strong>.</p>
                 </div>
             </div>
         </div>
@@ -160,7 +183,9 @@
 
         <main class="preview-panel card-glass">
             <div class="preview-card">
-                <div id="qrPreview" class="qr-canvas-container"></div>
+                <div class="qr-canvas-container" style="display: flex; justify-content: center; min-height: 250px; min-width: 250px;">
+                    <img id="qrResultImage" src="" alt="QR Code Preview" style="display: none; border-radius: 12px; width: 100%; max-width: 300px; height: auto; object-fit: contain;">
+                </div>
                 <div class="loading-overlay hidden" id="loadingOverlay">
                     <div class="spinner"></div>
                 </div>
@@ -168,7 +193,6 @@
             
             <div class="actions">
                 <button id="downloadPngBtn" class="btn-secondary">Download PNG</button>
-                <button id="downloadSvgBtn" class="btn-secondary">Download SVG</button>
             </div>
         </main>
     </div>
